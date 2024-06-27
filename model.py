@@ -30,22 +30,20 @@ def evaluate_asr_and_calculate_cer(audio_dir, text_dir, model_name='jonatasgrosm
             text_path = os.path.join(text_dir, text_file)
 
             if os.path.exists(text_path):
-                # Load and preprocess the audio
+                
                 input_audio = load_audio(audio_path)
                 input_values = processor(input_audio, sampling_rate=16000, return_tensors="pt").input_values
 
-                # Perform ASR
+                
                 with torch.no_grad():
                     logits = model(input_values).logits
                 predicted_ids = torch.argmax(logits, dim=-1)
                 transcription = processor.batch_decode(predicted_ids)[0].upper()  # Convert to uppercase
 
-                # Load reference transcription
-                reference = read_text(text_path).upper()  # Convert to uppercase
+                
+                reference = read_text(text_path).upper() 
 
-                # Check if reference and transcription are not empty
                 if reference and transcription:
-                    # Compute CER
                     cer = jiwer.cer(reference, transcription)
                     cer_scores.append(cer)
                     total_samples += 1
@@ -54,10 +52,10 @@ def evaluate_asr_and_calculate_cer(audio_dir, text_dir, model_name='jonatasgrosm
                     print(f"Reference: {reference}")
                     print(f"Transcription: {transcription}")
                     print(f"CER: {cer:.4f}")
-                    print("---------")
+                    
                 else:
                     print(f"Skipping file {audio_file}: Reference or transcription is empty.")
-                    print("---------")
+                    
 
     if total_samples > 0:
         average_cer = sum(cer_scores) / total_samples
@@ -65,7 +63,7 @@ def evaluate_asr_and_calculate_cer(audio_dir, text_dir, model_name='jonatasgrosm
     else:
         print("No valid samples found to compute CER.")
 
-# Example usage
+# Evalution 
 audio_directory = 'DataSet/wav'
 text_directory = 'DataSet/corrected_txt'
 evaluate_asr_and_calculate_cer(audio_directory, text_directory, model_name='jonatasgrosman/wav2vec2-large-xlsr-53-english')
