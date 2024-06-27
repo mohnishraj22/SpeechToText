@@ -22,7 +22,7 @@ pip install -r requirements.txt
 
 **Dataset**
 
-Nptel pure data of used in this model.
+Nptel pure data of used in this model.<br>
 https://github.com/AI4Bharat/NPTEL2020-Indian-English-Speech-Dataset
 
 **Results**
