@@ -3,7 +3,7 @@
 **Speech-to-Text Conversion Model**
 
 
-This repository contains a speech-to-text conversion model that leverages the Word2Vec algorithm to convert spoken language into written text. The model is designed to handle various accents(like Indian Accents,etc.) and noise levels, making it robust for real-world applications. It is implemented in Python and is suitable for use in voice assistants, transcription services, and other speech recognition systems.
+This repository contains a speech-to-text conversion model that leverages the Word2Vec algorithm to convert spoken language into written text. The model is designed to handle various accents(like Indian Accents,etc.) and noise levels, making it robust for real-world applications. It is implemented in Python and is suitable for use in voice assistants, transcription services, and other speech recognition systems.this model is implemented with the help of Huggingface Model.
 
 **Installation**<br>
 To install the necessary dependencies and set up the environment, follow these steps:
